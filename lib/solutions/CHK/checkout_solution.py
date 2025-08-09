@@ -11,24 +11,30 @@ class CheckoutSolution:
             items[letter] = 0
 
         for char in skus:
-            if char in SKU_characters:
+            if char in deal_priority:
+                group_discount.append(char)
+            elif char in SKU_characters:
                 items[char] += 1
-                if char in deal_priority:
-                    group_discount.append(char)
             else:
                 return -1
             
         group_discount.sort(key=lambda x : -deal_priority[x])
         counter = 0
         group_discount_cost = 0
-        while group_discount >= 3:
+        while len(group_discount) >= 3:
             group_discount.pop()
             counter += 1
             if counter == 3:
                 counter = 0
                 group_discount_cost += 45
         
-
+        for remainder in group_discount:
+            if remainder in "STY":
+                group_discount_cost += 20
+            elif remainder == "X":
+                group_discount_cost += 17
+            else:
+                group_discount_cost += 21
 
         A_remaining = items["A"]
         A_multi5 = A_remaining//5
@@ -79,10 +85,6 @@ class CheckoutSolution:
         
         R_cost = items["R"]*50
 
-        S_cost = items["S"]*30 #Change
-        
-        T_cost = items["T"]*20 # Change
-
         U_cost = (items["U"]//4 * 3 * 40) + (items["U"]%4 * 40)
         
         V_remaining = items["V"]
@@ -94,13 +96,7 @@ class CheckoutSolution:
 
         W_cost = items["W"] * 20
         
-        X_cost = items["X"] * 90 # Change
-
-        Y_cost = items["Y"] * 10 # Change
-
-        Z_cost = items["Z"] * 50 # Change
-        
-        total = A_cost + B_cost + C_cost + D_cost + E_cost + F_cost + G_cost+ H_cost + I_cost+ J_cost + K_cost+ L_cost + M_cost+ N_cost + O_cost + P_cost + Q_cost + R_cost + S_cost + T_cost + U_cost + V_cost + W_cost + X_cost + Y_cost +Z_cost
+        total = A_cost + B_cost + C_cost + D_cost + E_cost + F_cost + G_cost+ H_cost + I_cost+ J_cost + K_cost+ L_cost + M_cost+ N_cost + O_cost + P_cost + Q_cost + R_cost + U_cost + V_cost + W_cost + group_discount_cost
         return total
 
 # 1
@@ -185,5 +181,6 @@ a = CheckoutSolution()
 ans = a.checkout("STZZ")
 
 print(ans)
+
 
 
