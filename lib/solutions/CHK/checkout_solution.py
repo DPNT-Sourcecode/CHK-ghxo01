@@ -45,7 +45,7 @@ class CheckoutSolution:
         
         J_cost = items["J"]*60
 
-        K_cost = (items["K"]//2)*150 + (items["K"]%2)*80
+        K_cost = (items["K"]//2)*120 + (items["K"]%2)*70
         
         L_cost = items["L"]*90
 
@@ -63,9 +63,9 @@ class CheckoutSolution:
         
         R_cost = items["R"]*50
 
-        S_cost = items["S"]*30
+        S_cost = items["S"]*30 #Change
         
-        T_cost = items["T"]*20
+        T_cost = items["T"]*20 # Change
 
         U_cost = (items["U"]//4 * 3 * 40) + (items["U"]%4 * 40)
         
@@ -161,3 +161,5 @@ class CheckoutSolution:
 #| Y    | 10    |                        |
 #| Z    | 50    |                        |
 #+------+-------+------------------------+
+
+# 5 So STXYZ needs to be stored externally, lets use an order for now
