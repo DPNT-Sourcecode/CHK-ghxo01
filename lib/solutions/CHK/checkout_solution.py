@@ -4,7 +4,7 @@ class CheckoutSolution:
     # skus = unicode string
     def checkout(self, skus):
         SKU_characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        deal_priority = ["Z", "S", "T", "Y", "X"]
+        deal_priority = {"Z":1, "S":2, "T":2, "Y":2, "X":3}
         items = {}
         group_discount = []
         for letter in SKU_characters:
@@ -19,7 +19,16 @@ class CheckoutSolution:
                 return -1
             
         group_discount.sort(key=lambda x : -deal_priority[x])
-        print(group_discount)
+        counter = 0
+        group_discount_cost = 0
+        while group_discount >= 3:
+            group_discount.pop()
+            counter += 1
+            if counter == 3:
+                counter = 0
+                group_discount_cost += 45
+        
+
 
         A_remaining = items["A"]
         A_multi5 = A_remaining//5
@@ -176,4 +185,5 @@ a = CheckoutSolution()
 ans = a.checkout("STZZ")
 
 print(ans)
+
 
