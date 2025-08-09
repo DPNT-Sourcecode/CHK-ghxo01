@@ -4,16 +4,21 @@ class CheckoutSolution:
     # skus = unicode string
     def checkout(self, skus):
         SKU_characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        deal_priority = ["Z", "S", "T", "Y", "X"]
         items = {}
+        multi_deak = {}
         for letter in SKU_characters:
             items[letter] = 0
+            if letter in deal_priority:
+                
 
         for char in skus:
             if char in SKU_characters:
                 items[char] += 1
+
             else:
                 return -1
-
+            
         A_remaining = items["A"]
         A_multi5 = A_remaining//5
         A_remaining %= 5
@@ -78,11 +83,11 @@ class CheckoutSolution:
 
         W_cost = items["W"] * 20
         
-        X_cost = items["X"] * 90
+        X_cost = items["X"] * 90 # Change
 
-        Y_cost = items["Y"] * 10
+        Y_cost = items["Y"] * 10 # Change
 
-        Z_cost = items["Z"] * 50
+        Z_cost = items["Z"] * 50 # Change
         
         total = A_cost + B_cost + C_cost + D_cost + E_cost + F_cost + G_cost+ H_cost + I_cost+ J_cost + K_cost+ L_cost + M_cost+ N_cost + O_cost + P_cost + Q_cost + R_cost + S_cost + T_cost + U_cost + V_cost + W_cost + X_cost + Y_cost +Z_cost
         return total
