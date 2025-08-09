@@ -18,7 +18,7 @@ class CheckoutSolution:
             else:
                 return -1
             
-        group_discount.sort(-deal_priority)
+        group_discount.sort(key=lambda x : -deal_priority[x])
         print(group_discount)
 
         A_remaining = items["A"]
@@ -170,4 +170,10 @@ class CheckoutSolution:
 #+------+-------+------------------------+
 
 # 5 So STXYZ needs to be stored externally, lets use an order for now
+
+a = CheckoutSolution()
+
+ans = a.checkout("STZZ")
+
+print(ans)
 
