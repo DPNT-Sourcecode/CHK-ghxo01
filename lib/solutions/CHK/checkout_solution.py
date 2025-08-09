@@ -21,12 +21,10 @@ class CheckoutSolution:
         group_discount.sort(key=lambda x : -deal_priority[x])
         counter = 0
         group_discount_cost = 0
-        while len(group_discount) >= 2:
-            group_discount.pop()
-            counter += 1
-            if counter == 3:
-                group_discount_cost += 45
-                counter = 0
+        while len(group_discount) >= 3:
+            for i in range(3):
+                group_discount.pop()
+            group_discount_cost += 45
         
         for remainder in group_discount:
             if remainder in "STY":
@@ -178,7 +176,7 @@ class CheckoutSolution:
 
 a = CheckoutSolution()
 
-ans = a.checkout("STZZZZ")
+ans = a.checkout("ABCDEFGHIJKLMNOPQRUVW")
 
 print(ans)
 
