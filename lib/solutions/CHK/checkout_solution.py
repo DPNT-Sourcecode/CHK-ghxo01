@@ -6,19 +6,21 @@ class CheckoutSolution:
         SKU_characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         deal_priority = ["Z", "S", "T", "Y", "X"]
         items = {}
-        multi_deak = {}
+        group_discount = []
         for letter in SKU_characters:
             items[letter] = 0
-            if letter in deal_priority:
-                
 
         for char in skus:
             if char in SKU_characters:
                 items[char] += 1
-
+                if char in deal_priority:
+                    group_discount.append(char)
             else:
                 return -1
             
+        group_discount.sort(-deal_priority)
+        print(group_discount)
+
         A_remaining = items["A"]
         A_multi5 = A_remaining//5
         A_remaining %= 5
@@ -168,3 +170,4 @@ class CheckoutSolution:
 #+------+-------+------------------------+
 
 # 5 So STXYZ needs to be stored externally, lets use an order for now
+
