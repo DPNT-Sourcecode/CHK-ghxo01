@@ -173,12 +173,3 @@ class CheckoutSolution:
 #+------+-------+------------------------+
 
 # 5 So STXYZ needs to be stored externally, lets use an order for now
-
-a = CheckoutSolution()
-
-ans = a.checkout("ABCDEFGHIJKLMNOPQRUVW")
-
-print(ans)
-
-
-
